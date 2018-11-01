@@ -7,43 +7,57 @@
     android:exported="true"
     tools:context=".TestActivity">
 
-    <Button
-        android:id="@+id/take_photo_file"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="552dp"
-        android:text="Take a big photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/picture"
         android:layout_width="322dp"
-        android:layout_height="362dp"
-        android:layout_marginBottom="74dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="193dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/take_photo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/go_back"
         app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/all_apps_divider" />
 
     <Button
         android:id="@+id/take_photo"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="68dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="Take a photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/picture" />
+
+    <Button
+        android:id="@+id/take_photo_file"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Take a  big photo "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picture"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Button
+        android:id="@+id/go_back"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginStart="16dp"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

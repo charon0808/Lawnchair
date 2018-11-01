@@ -47,8 +47,22 @@ public class TestActivity extends AppCompatActivity {
                 takePhotoFile();
             }
         });
-    }
 
+        findViewById(R.id.go_back).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent();
+        //intent.putExtra("data_return", "相信自己");
+        setResult(RESULT_OK, intent);
+        super.onBackPressed();
+        return;
+    }
     private void takePhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, TAKE_PHOTO);  // 调用机器相机并返回相机默认返回的缩略图
@@ -91,5 +105,4 @@ public class TestActivity extends AppCompatActivity {
             }
         }
     }
-
 }
