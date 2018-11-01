@@ -13,8 +13,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
-import ch.deletescape.lawnchair.DumbImportExportTask
 import ch.deletescape.lawnchair.R
+import ch.deletescape.lawnchair.TestActivity
 import ch.deletescape.lawnchair.Utilities
 
 class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
@@ -28,6 +28,7 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
     private val restoreBackup by lazy { bottomSheetView.findViewById<View>(R.id.action_restore_backup) }
     private val shareBackup by lazy { bottomSheetView.findViewById<View>(R.id.action_share_backup) }
     private val removeBackup by lazy { bottomSheetView.findViewById<View>(R.id.action_remove_backup_from_list) }
+    private val photo by lazy { bottomSheetView.findViewById<View>(R.id.photo) }   // add buttom
     private val divider by lazy { bottomSheetView.findViewById<View>(R.id.divider) }
 
     private val bottomSheetView by lazy {
@@ -51,6 +52,12 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
             bottomSheet.dismiss()
             shareBackup(currentPosition)
         }
+
+        photo.setOnClickListener {
+            bottomSheet.dismiss()
+            photoAction(currentPosition)
+        }
+
         removeBackup.setOnClickListener {
             bottomSheet.dismiss()
             removeItem(currentPosition)
@@ -79,6 +86,11 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
         } else {
             adapter.setData(LawnchairBackup.listLocalBackups(this))
         }
+    }
+
+    fun photoAction(position: Int) {
+        startActivity(Intent(this, TestActivity::class.java).apply {
+        })
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

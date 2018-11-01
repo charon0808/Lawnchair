@@ -73,7 +73,6 @@
             <meta-data
                 android:name="android.max_aspect"
                 android:value="2.1" />
-
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
@@ -131,6 +130,8 @@
             android:readPermission="ch.deletescape.lawnchair.permission.READ_SETTINGS"
             android:writePermission="ch.deletescape.lawnchair.permission.WRITE_SETTINGS" />
 
+
+
         <receiver
             android:name=".InstallShortcutReceiver"
             android:permission="com.android.launcher.permission.INSTALL_SHORTCUT">
@@ -180,8 +181,8 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
-        <meta-data 
-            android:name="com.samsung.android.non_immersive" 
+        <meta-data
+            android:name="com.samsung.android.non_immersive"
             android:value="true" />
 
         <activity
@@ -192,7 +193,6 @@
             android:name=".FakeLauncher"
             android:enabled="false"
             android:targetActivity=".BlankActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -201,20 +201,68 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".backup.BackupListActivity"
+        <activity
+            android:name=".backup.BackupListActivity"
             android:label="@string/backups"
             android:parentActivityName=".settings.ui.SettingsActivity"
             android:theme="@style/SettingsTheme" />
-
-        <activity android:name=".backup.NewBackupActivity"
+        <activity
+            android:name=".backup.NewBackupActivity"
             android:label="@string/new_backup"
             android:parentActivityName=".backup.BackupListActivity"
             android:theme="@style/SettingsTheme" />
-
-        <activity android:name=".backup.RestoreBackupActivity"
+        <activity
+            android:name=".backup.RestoreBackupActivity"
             android:label="@string/restore_backup"
             android:parentActivityName=".backup.BackupListActivity"
             android:theme="@style/SettingsTheme" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".dragndrop.AddItemActivity"
+            android:autoRemoveFromRecents="true"
+            android:excludeFromRecents="true"
+            android:label="@string/action_add_to_workspace"
+            android:theme="@android:style/Theme.Material.Light.Dialog.Alert">
+            <intent-filter>
+                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
+                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gestures.dt2s.SleepTimeoutActivity"
+            android:screenOrientation="locked"
+            android:theme="@style/SleepTimeoutTheme" />
+
+        <receiver
+            android:name=".gestures.dt2s.SleepDeviceAdmin"
+            android:description="@string/dt2s_admin_hint"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/sleep_admin_policy" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".TestActivity"
+            android:label="Restore"
+            android:exported="true"
+            android:parentActivityName=".backup.BackupListActivity"
+            android:theme="@style/SettingsTheme" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -225,33 +273,6 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
-        <activity android:name="ch.deletescape.lawnchair.dragndrop.AddItemActivity"
-            android:theme="@android:style/Theme.Material.Light.Dialog.Alert"
-            android:excludeFromRecents="true"
-            android:autoRemoveFromRecents="true"
-            android:label="@string/action_add_to_workspace" >
-            <intent-filter>
-                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
-                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name="ch.deletescape.lawnchair.gestures.dt2s.SleepTimeoutActivity"
-            android:screenOrientation="locked"
-            android:theme="@style/SleepTimeoutTheme"/>
-
-        <receiver
-            android:name="ch.deletescape.lawnchair.gestures.dt2s.SleepDeviceAdmin"
-            android:description="@string/dt2s_admin_hint"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data
-                android:name="android.app.device_admin"
-                android:resource="@xml/sleep_admin_policy" />
-            <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

@@ -61,4 +61,16 @@
         android:padding="16dp"
         android:text="@string/backup_remove_from_recents" />
 
+    <TextView
+        android:id="@+id/photo"
+        android:background="?selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_list_remove"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="Take a photo" />
+
 </LinearLayout>
