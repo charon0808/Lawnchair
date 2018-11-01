@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import ch.deletescape.lawnchair.ClickButtonActivity
 import ch.deletescape.lawnchair.R
 import ch.deletescape.lawnchair.TestActivity
 import ch.deletescape.lawnchair.Utilities
@@ -30,6 +31,7 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
     private val removeBackup by lazy { bottomSheetView.findViewById<View>(R.id.action_remove_backup_from_list) }
     private val photo by lazy { bottomSheetView.findViewById<View>(R.id.photo) }   // add buttom
     private val divider by lazy { bottomSheetView.findViewById<View>(R.id.divider) }
+    private val info by lazy { bottomSheetView.findViewById<View>(R.id.view_info) }   // add buttom
 
     private val bottomSheetView by lazy {
         layoutInflater.inflate(R.layout.backup_bottom_sheet,
@@ -48,9 +50,15 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
             bottomSheet.dismiss()
             openRestore(currentPosition)
         }
+
         shareBackup.setOnClickListener {
             bottomSheet.dismiss()
             shareBackup(currentPosition)
+        }
+
+        info.setOnClickListener {
+            bottomSheet.dismiss()
+            viewInfo(currentPosition)
         }
 
         photo.setOnClickListener {
@@ -90,6 +98,11 @@ class BackupListActivity : BackupBaseActivity(), BackupListAdapter.Callbacks {
 
     fun photoAction(position: Int) {
         startActivity(Intent(this, TestActivity::class.java).apply {
+        })
+    }
+
+    fun viewInfo(position: Int){
+        startActivity(Intent(this, ClickButtonActivity::class.java).apply {
         })
     }
 

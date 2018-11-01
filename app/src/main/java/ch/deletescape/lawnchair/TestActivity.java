@@ -1,6 +1,7 @@
 package ch.deletescape.lawnchair;
 
 
+import android.app.WallpaperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -54,11 +55,29 @@ public class TestActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        findViewById(R.id.set_wallpaper).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                set_wallpaper();
+            }
+        });
     }
+
+    public void set_wallpaper(){
+        WallpaperManager manager = WallpaperManager.getInstance(this);
+        try {
+            manager.setBitmap(bitmap);
+            Toast.makeText(this,"set wallpaper successfully",Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this,"failed to set wallpaper",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   // 返回上一层
         Intent intent=new Intent();
-        //intent.putExtra("data_return", "相信自己");
         setResult(RESULT_OK, intent);
         super.onBackPressed();
         return;
@@ -83,9 +102,9 @@ public class TestActivity extends AppCompatActivity {
             if (requestCode==TAKE_PHOTO_FILE) {
                 File photoFile = new File(photoPath);
                 if (photoFile.exists()) {
-                    Bitmap bm = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                    bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                     iv.setVisibility(View.VISIBLE);
-                    iv.setImageBitmap(bm);
+                    iv.setImageBitmap(bitmap);
                     Toast.makeText(this, "image saved at " + photoPath, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(this, "image file does not exist!", Toast.LENGTH_LONG).show();
