@@ -63,15 +63,15 @@
 
     <TextView
         android:id="@+id/photo"
-        android:background="?selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center"
+        android:background="?selectableItemBackground"
         android:drawablePadding="16dp"
         android:drawableStart="@drawable/ic_list_remove"
         android:gravity="center_vertical"
         android:padding="16dp"
-        android:text="Take a photo" />
+        android:text="Take a photo and set as wallpaper" />
 
     <TextView
         android:id="@+id/view_info"
