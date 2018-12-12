@@ -23,11 +23,9 @@ public class TestActivity extends AppCompatActivity {
     private ImageView	iv;
     private Bitmap		bitmap;
     private String     photoPath;
-    public  boolean   isSetWallpaper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        isSetWallpaper=false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
@@ -78,10 +76,8 @@ public class TestActivity extends AppCompatActivity {
         try {
             manager.setBitmap(bitmap);
             Toast.makeText(this,"set wallpaper successfully",Toast.LENGTH_SHORT).show();
-            isSetWallpaper=true;
         } catch (Exception e) {
             try {
-                isSetWallpaper = false;
                 e.printStackTrace();
                 Toast.makeText(this, "failed to set wallpaper", Toast.LENGTH_SHORT).show();
             }
