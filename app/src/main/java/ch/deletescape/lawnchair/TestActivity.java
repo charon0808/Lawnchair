@@ -81,7 +81,10 @@ public class TestActivity extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(this, "failed to set wallpaper", Toast.LENGTH_SHORT).show();
             }
-            catch(Exception ee){}
+            catch(Exception ee){
+                ee.printStackTrace();
+                Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
